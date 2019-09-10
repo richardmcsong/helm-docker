@@ -23,7 +23,7 @@ RUN google-cloud-sdk/bin/gcloud config set --installation component_manager/disa
 
 # Install Helm
 ENV FILENAME helm-${VERSION}-linux-amd64.tar.gz
-ENV HELM_URL https://storage.googleapis.com/kubernetes-helm/${FILENAME}
+ENV HELM_URL https://get.helm.sh/${FILENAME}
 
 
 RUN echo $HELM_URL
@@ -39,13 +39,13 @@ RUN apk --update add git bash
 
 # Install envsubst [better than using 'sed' for yaml substitutions]
 ENV BUILD_DEPS="gettext"  \
-    RUNTIME_DEPS="libintl"
+  RUNTIME_DEPS="libintl"
 
 RUN set -x && \
-    apk add --update $RUNTIME_DEPS && \
-    apk add --virtual build_deps $BUILD_DEPS &&  \
-    cp /usr/bin/envsubst /usr/local/bin/envsubst && \
-    apk del build_deps
+  apk add --update $RUNTIME_DEPS && \
+  apk add --virtual build_deps $BUILD_DEPS &&  \
+  cp /usr/bin/envsubst /usr/local/bin/envsubst && \
+  apk del build_deps
 
 # Install Helm plugins
 RUN helm init --client-only
