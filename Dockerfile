@@ -47,11 +47,11 @@ RUN set -x && \
   cp /usr/bin/envsubst /usr/local/bin/envsubst && \
   apk del build_deps
 
-# Install Helm plugins
-RUN helm init --client-only
-# workaround for an issue in updating the binary of `helm-diff`
-ENV HELM_PLUGIN_DIR /.helm/plugins/helm-diff
-# Plugin is downloaded to /tmp, which must exist
-RUN mkdir /tmp
-RUN helm plugin install https://github.com/viglesiasce/helm-gcs.git
-RUN helm plugin install https://github.com/databus23/helm-diff
+# # Install Helm plugins
+# RUN helm init --client-only
+# # workaround for an issue in updating the binary of `helm-diff`
+# ENV HELM_PLUGIN_DIR /.helm/plugins/helm-diff
+# # Plugin is downloaded to /tmp, which must exist
+# RUN mkdir /tmp
+# RUN helm plugin install https://github.com/viglesiasce/helm-gcs.git
+# RUN helm plugin install https://github.com/databus23/helm-diff
