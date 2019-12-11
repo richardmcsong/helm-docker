@@ -53,5 +53,5 @@ RUN set -x && \
 # ENV HELM_PLUGIN_DIR /.helm/plugins/helm-diff
 # # Plugin is downloaded to /tmp, which must exist
 # RUN mkdir /tmp
-# RUN helm plugin install https://github.com/viglesiasce/helm-gcs.git
+RUN helm plugin install https://github.com/viglesiasce/helm-gcs.git
 # RUN helm plugin install https://github.com/databus23/helm-diff
